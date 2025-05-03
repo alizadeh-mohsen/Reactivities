@@ -14,3 +14,9 @@
 5. Material UI
 6. Axios
 7. Json ToTS
+
+# Creating CRUD application useing CQRS and Mediator in .Net
+1. Clean Architecture pattern
+2. CQRS + Mediator pattern
+3. AutoMapper
+
