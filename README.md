@@ -16,7 +16,7 @@
 7. Json ToTS
 8. Fragment
 
-# Creating CRUD application useing CQRS and Mediator in .Net
+# Creating CRUD APIs using CQRS and Mediator in .Net
 1. Clean Architecture pattern
 2. CQRS + Mediator pattern
 3. AutoMapper
@@ -35,6 +35,8 @@
 5. .env.development congigs
 4. Hook the request to the API
 
-# Routering
+# Routing
 1. ReactRouter 
 2. createBrowserRouter, createBrowserRouter, Outlet, NavLink,Link, to, useNavigate
+
+# Styling the user interface
