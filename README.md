@@ -34,3 +34,7 @@
 3. Using Axios interceptors
 5. .env.development congigs
 4. Hook the request to the API
+
+# Routering
+1. ReactRouter 
+2. createBrowserRouter, createBrowserRouter, Outlet, NavLink,Link, to, useNavigate
