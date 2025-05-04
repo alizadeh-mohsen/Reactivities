@@ -21,7 +21,7 @@
 2. CQRS + Mediator pattern
 3. AutoMapper
 
-# Creatig CRUD on Client side
+# Creating CRUD on Client side
 1. Adding NavBar from Material UI AppBar
 2. sx, CssBaseline
 3. Materail UI componenst Grid2, Box, Card, Paper, Typography, TextFiled
@@ -40,3 +40,4 @@
 2. createBrowserRouter, createBrowserRouter, Outlet, NavLink,Link, to, useNavigate
 
 # Styling the user interface
+1. Avatar, react-calendars, UseLocation, date-fns

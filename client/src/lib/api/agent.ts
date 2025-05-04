@@ -1,4 +1,3 @@
-import { convertLength } from "@mui/material/styles/cssUtils";
 import axios from "axios";
 
 const sleep = (delay: number) => {
@@ -8,14 +7,13 @@ const sleep = (delay: number) => {
 }
 
 const agent = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL
+    baseURL: import.meta.env.VITE_API_URL
 });
 
 agent.interceptors.response.use(async response => {
     try {
-        await sleep(500);
+        await sleep(1000);
         return response;
-        
     } catch (error) {
         console.log(error);
         return Promise.reject(error)

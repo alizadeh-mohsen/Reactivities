@@ -6,9 +6,9 @@ import { useActivities } from "../../../lib/hooks/useActivities";
 export default function ActivityDetail() {
     const navigate=useNavigate();
     const{id}= useParams();
-    const {activity,isLoading} = useActivities(id);
+    const {activity,isLoadingActivity} = useActivities(id);
 
-    if(isLoading)  return <Typography>Loading...</Typography>
+    if(isLoadingActivity)  return <Typography>Loading...</Typography>
     if (!activity) return <Typography>Activity not found</Typography>
 
     return (
