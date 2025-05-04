@@ -25,7 +25,7 @@ export default function ActivityForm({ activity, closeForm }: Props) {
             await updateActivity.mutateAsync(data as unknown as Activity);
             closeForm();
         } else {
-            await createActivity.mutateAsync(data as unknown as Activity);0
+            await createActivity.mutateAsync(data as unknown as Activity);
             closeForm();
         }
     }

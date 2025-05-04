@@ -8,7 +8,7 @@
 
 # Client Skeleton
 1. React project files
-2. Vite
+2. Vite build tool
 3. React Dev tools
 4. Typescript SWC (Speedy Web Compiler)
 5. Material UI
@@ -26,3 +26,11 @@
 2. sx, CssBaseline
 3. Materail UI componenst Grid2, Box, Card, Paper, Typography, TextFiled
 4. Basic Crud
+
+# React Query
+1. Configure React Query - Tanstack Query, TanStack Devtools
+2. React Query Dev Tools
+2. Custom hooks : UseQuery, UseMutation
+3. Using Axios interceptors
+5. .env.development congigs
+4. Hook the request to the API
