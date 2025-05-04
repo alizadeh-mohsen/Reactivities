@@ -14,9 +14,15 @@
 5. Material UI
 6. Axios
 7. Json ToTS
+8. Fragment
 
 # Creating CRUD application useing CQRS and Mediator in .Net
 1. Clean Architecture pattern
 2. CQRS + Mediator pattern
 3. AutoMapper
 
+# Creatig CRUD on Client side
+1. Adding NavBar from Material UI AppBar
+2. sx, CssBaseline
+3. Materail UI componenst Grid2, Box, Card, Paper, Typography, TextFiled
+4. Basic Crud
