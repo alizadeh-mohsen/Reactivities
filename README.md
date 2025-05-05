@@ -30,10 +30,10 @@
 # React Query
 1. Configure React Query - Tanstack Query, TanStack Devtools
 2. React Query Dev Tools
-2. Custom hooks : UseQuery, UseMutation
-3. Using Axios interceptors
+3. Custom hooks : UseQuery, UseMutation, UseQueryClient
+4. Using Axios interceptors
 5. .env.development congigs
-4. Hook the request to the API
+6. Hook the request to the API
 
 # Routing
 1. ReactRouter 
@@ -41,3 +41,12 @@
 
 # Styling the user interface
 1. Avatar, react-calendars, UseLocation, date-fns
+
+# MobX
+1. Observables, MakeAutoObservable
+2. Actions, Set value
+3. Computed properties, Get value
+4. Reactions, On value change
+5. AutoRun,
+6. Stores, Global state, useContext
+7. Observers,mobx react lite

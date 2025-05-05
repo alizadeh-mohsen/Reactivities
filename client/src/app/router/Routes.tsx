@@ -5,7 +5,6 @@ import ActivityDashboard from "../../features/Activities/Dashboard/ActivityDashb
 import ActivityDetailPage from "../../features/Activities/Details/ActivityDetailPage";
 import ActivityForm from "../../features/Activities/form/ActivityForm";
 
-
 export const router = createBrowserRouter([
     {
         path: '/',
