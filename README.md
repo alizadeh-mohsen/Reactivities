@@ -50,3 +50,8 @@
 5. AutoRun,
 6. Stores, Global state, useContext
 7. Observers,mobx react lite
+
+# Error Handling
+1. FluentValidation
+2. Validation Middleware, using Mediator middleware
+3. react-toastify

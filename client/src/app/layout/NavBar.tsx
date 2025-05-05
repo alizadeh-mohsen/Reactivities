@@ -30,8 +30,11 @@ export default function NavBar() {
                             <MenuItemLink to='/createActivity'>
                                 Create Activity
                             </MenuItemLink>
-                            <MenuItemLink to='/'>
-                                Reserved
+                            <MenuItemLink to='/counter'>
+                                Counter
+                            </MenuItemLink>
+                            <MenuItemLink to='/errors'>
+                                Errors
                             </MenuItemLink>
                         </Box>
                         <MenuItem>
