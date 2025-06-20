@@ -9,9 +9,7 @@ export const useActivities = (id?: string) => {
     const { data: activities, isPending } = useQuery({
         queryKey: ['activities'],
         queryFn: async () => {
-            console.log('mohsen');
             const response = await agent.get<Activity[]>('/activities');
-            console.log('mohsen2');
             return response.data;
         },
         enabled: !id && location.pathname === '/activities'

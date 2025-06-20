@@ -1,5 +1,8 @@
+using API.Middleware;
 using Application.Activities.Queries;
+using Application.Activities.Validators;
 using Application.Core;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
@@ -15,16 +18,29 @@ builder.Services.AddDbContext<AppDbContext>(
     )
 );
 builder.Services.AddCors();
-builder.Services.AddMediatR(x => x.RegisterServicesFromAssemblyContaining<GetActivityList.Handler>());
-builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
-var app = builder.Build();
+builder.Services.AddMediatR(
+    x =>
+    {
+        x.RegisterServicesFromAssemblyContaining<GetActivityList.Handler>();
+        x.AddOpenBehavior(typeof(ValidationBehavior<,>));
 
+    });
+builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+builder.Services.AddValidatorsFromAssemblyContaining<CreateActivityValidator>();
+builder.Services.AddTransient<ExceptionMiddleware>();
+
+var app = builder.Build();
 // Configure the HTTP request pipeline.
 
-app.UseHttpsRedirection();
+app.UseMiddleware<ExceptionMiddleware>();
+app.UseCors(
+    x => x.AllowAnyHeader().AllowAnyMethod()
+    .WithOrigins("http://localhost:3000", "https://localhost:3000")
+);
+
+app.MapControllers();
 
 //app.UseAuthorization();
-
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -40,9 +56,6 @@ using (var scope = app.Services.CreateScope())
         logger.LogError(ex, "An error occurred while seeding the database.");
     }
 }
-app.UseCors(
-    x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000", "https://localhost:3000")
-);
-app.MapControllers();
+
 
 app.Run();
