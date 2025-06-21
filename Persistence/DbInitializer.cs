@@ -1,24 +1,32 @@
-﻿using Domain;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Domain;
+using Microsoft.AspNetCore.Identity;
 
-namespace Persistence
+namespace Persistence;
+
+public class DbInitializer
 {
-    public class DbInitializer
+    public static async Task SeedData(AppDbContext context, UserManager<User> userManager)
     {
-        public static async Task Initialize(AppDbContext context)
+        if (!userManager.Users.Any())
         {
-            context.Database.EnsureCreated();
-            // Look for any activities.
-            if (context.Activities.Any())
+            var users = new List<User>
             {
-                return;   // DB has been seeded
+                new() {DisplayName = "Bob", UserName = "bob@test.com", Email = "bob@test.com"},
+                new() {DisplayName = "Tom", UserName = "tom@test.com", Email = "tom@test.com"},
+                new() {DisplayName = "Jane", UserName = "jane@test.com", Email = "jane@test.com"}
+            };
+
+            foreach (var user in users)
+            {
+                await userManager.CreateAsync(user, "Pa$$w0rd");
             }
-            var activities = new List<Activity>
-            {
+        }
+
+        if (context.Activities.Any()) return;
+
+        var activities = new List<Activity>
+        {
             new() {
                 Title = "Past Activity 1",
                 Date = DateTime.Now.AddMonths(-2),
@@ -124,9 +132,11 @@ namespace Persistence
                 Venue = "River Thames, England, United Kingdom",
                 Latitude = 51.5575525,
                 Longitude = -0.781404
-            }            };
-            context.Activities.AddRange(activities);
-            await context.SaveChangesAsync();
-        }
+            }
+        };
+
+        context.Activities.AddRange(activities);
+
+        await context.SaveChangesAsync();
     }
 }

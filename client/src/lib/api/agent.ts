@@ -42,7 +42,8 @@ agent.interceptors.response.use(
                             modalStateErrors.push(data.errors[key]);
                         }
                     }
-                    throw modalStateErrors.flat();
+                    toast.error(modalStateErrors.flat());
+                    throw modalStateErrors.flat();  //todo 
                 } else {
                     toast.error(data);
                 }

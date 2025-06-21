@@ -20,7 +20,7 @@ export default function NavBar() {
                         <Box>
                             <MenuItem component={NavLink} to='/' sx={{ display: 'flex', gap: 2 }}>
                                 <Group fontSize="large" />
-                                <Typography variant="h4" fontWeight='bold'>Reactivities</Typography>
+                                <Typography variant="h4" fontWeight='bold'>Events</Typography>
                             </MenuItem>
                         </Box>
                         <Box sx={{ display: 'flex' }}>
@@ -29,12 +29,6 @@ export default function NavBar() {
                             </MenuItemLink>
                             <MenuItemLink to='/createActivity'>
                                 Create Activity
-                            </MenuItemLink>
-                            <MenuItemLink to='/counter'>
-                                Counter
-                            </MenuItemLink>
-                            <MenuItemLink to='/errors'>
-                                Errors
                             </MenuItemLink>
                         </Box>
                         <MenuItem>
