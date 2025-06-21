@@ -82,10 +82,16 @@
 3. react-toastify
 
 # Forms
-1. React Hook Form
-2. Validation with Zod,
-3. UseForm, ...register
-4. React Leaflet
+1. React Hook Form: useForm, useWatch, register, reset, handleSubmit
+2. Client Side Validation with Zod,
+3. Zod ValidationSchema, 
+1. Custom FromControls:
+	1. TextInput
+	1. SelectInput, 
+	1. DateInput:: MUI X Date and Time picker :Date time picker, 
+	1. AutoCompleteInput: location IQ, google Places API(New)
+debounce
+4. React Leaflet to  display Map
 
 
 Cloudinary
