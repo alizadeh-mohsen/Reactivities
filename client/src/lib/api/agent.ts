@@ -10,7 +10,8 @@ const sleep = (delay: number) => {
 }
 
 const agent = axios.create({
-    baseURL: import.meta.env.VITE_API_URL
+    baseURL: import.meta.env.VITE_API_URL,
+    withCredentials: true
 });
 
 agent.interceptors.request.use(config => {
@@ -25,14 +26,13 @@ agent.interceptors.response.use(
         return response;
     },
     async error => {
+        await sleep(1000);
         store.uiStore.isIdle();
-        if (error.message === 'Network Error' && !error.response) { //if(error.code === 'ERR_NETWORK') {
+ if (error.message === 'Network Error' && !error.response) { //if(error.code === 'ERR_NETWORK') {
             toast.error('Server is unreachable. Please make sure API is running!');
             return Promise.reject(error);
         }
-        
         const { status, data } = error.response;
-
         switch (status) {
             case 400:
                 if (data.errors) {
@@ -42,8 +42,7 @@ agent.interceptors.response.use(
                             modalStateErrors.push(data.errors[key]);
                         }
                     }
-                    toast.error(modalStateErrors.flat());
-                    throw modalStateErrors.flat();  //todo 
+                    throw modalStateErrors.flat();
                 } else {
                     toast.error(data);
                 }
@@ -55,7 +54,7 @@ agent.interceptors.response.use(
                 router.navigate('/not-found');
                 break;
             case 500:
-                router.navigate('/server-error', { state: { error: data } })
+                router.navigate('/server-error', {state: {error: data}})
                 break;
             default:
                 break;
@@ -66,5 +65,3 @@ agent.interceptors.response.use(
 );
 
 export default agent;
-
-

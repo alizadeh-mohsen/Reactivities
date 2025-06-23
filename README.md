@@ -52,7 +52,7 @@
 1. Component A => UseEQuery => Entities => QueryCache => UseMutation: Set cache/Inavlidate cache, Optimistic updates
 1. Data fetching and state management, caching, background fetching, synchronization, and more
 1. Configure React Query - Tanstack Query, TanStack Devtools
-2. QueryClientProvider, QueryClient, QueryClientConfig
+2. QueryClientProvider, t, QueryClientConfig
 1. React Query Dev Tools
 3. Custom hooks : UseQuery, UseMutation, UseQueryClient
 4. Using Axios interceptors
@@ -93,10 +93,13 @@
 debounce
 4. React Leaflet to  display Map
 
-# Identiy
+# Identity backend
 1. Microsoft AspNetCore Identity EntityFrameworkCore
+1. cookies, JWT, Refresh tokens
 
-
+# Identity frontend
+1. client login/registert
+1. private routes
 
 
 
