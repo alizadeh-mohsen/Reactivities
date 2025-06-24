@@ -96,6 +96,9 @@ debounce
 # Identity backend
 1. Microsoft AspNetCore Identity EntityFrameworkCore
 1. cookies, JWT, Refresh tokens
+1. IhttpContextAccessor to get userId
+1. IAuthorizationRequirement, AuthorizationHandler
+1. Policy-based authorization 
 
 # Identity frontend
 1. client login/registert

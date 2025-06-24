@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35818.85 d17.13
+VisualStudioVersion = 17.13.35818.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{597B6E41-86D6-4065-A1D8-147A00C81C5B}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{0FB16460-0E44-46A5-86F3-727C98913017}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{35440D3C-6292-4E1A-9128-576AD02A7F5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{C7AB5738-A927-4880-AA25-0E30BFE70787}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{35440D3C-6292-4E1A-9128-576AD02A7F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35440D3C-6292-4E1A-9128-576AD02A7F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35440D3C-6292-4E1A-9128-576AD02A7F5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7AB5738-A927-4880-AA25-0E30BFE70787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7AB5738-A927-4880-AA25-0E30BFE70787}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7AB5738-A927-4880-AA25-0E30BFE70787}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7AB5738-A927-4880-AA25-0E30BFE70787}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
