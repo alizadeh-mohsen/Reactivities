@@ -5,7 +5,7 @@ import { useAccount } from "./useAccount";
 
 export const useActivities = (id?: string) => {
     const queryClient = useQueryClient();
-    const {currentUser} = useAccount();
+    const { currentUser } = useAccount();
     const location = useLocation();
 
     const { data: activities, isLoading } = useQuery({
@@ -14,24 +14,42 @@ export const useActivities = (id?: string) => {
             const response = await agent.get<Activity[]>('/activities');
             return response.data;
         },
-        enabled: !id && location.pathname === '/activities' && !!currentUser
+        enabled: !id && location.pathname === '/activities' && !!currentUser,
+        select: data => {
+            return data.map(activity => {
+                return {
+                    ...activity,
+                    isHost: currentUser?.id === activity.hostId,
+                    isGoing: activity.attendees.some(x => x.id === currentUser?.id)
+                }
+            })
+        }
+
     });
 
-    const {data: activity, isLoading: isLoadingActivity} = useQuery({
+    const { data: activity, isLoading: isLoadingActivity } = useQuery({
         queryKey: ['activities', id],
         queryFn: async () => {
             const response = await agent.get<Activity>(`/activities/${id}`);
             return response.data;
         },
-        enabled: !!id && !!currentUser
+        enabled: !!id && !!currentUser,
+        select: data => {
+            return {
+                ...data,
+                isHost: currentUser?.id === data.hostId,
+                isGoing: data.attendees.some(x => x.id === currentUser?.id)
+            }
+        }
     })
 
     const updateActivity = useMutation({
         mutationFn: async (activity: Activity) => {
-            await agent.put('/activities', activity)
+            console.log(activity);
+            await agent.put(`/activities/${activity.id}`, activity)
         },
         onSuccess: async () => {
-            await queryClient.invalidateQueries({
+            await queryClient.refetchQueries({
                 queryKey: ['activities']
             })
         }
@@ -60,6 +78,18 @@ export const useActivities = (id?: string) => {
         }
     });
 
+    const updateAttendance = useMutation({
+        mutationFn: async (activityId: string) => {
+            await agent.post(`/activities/attend/${activityId}`)
+        },
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({
+                queryKey: ['activities', id]
+            })
+        }
+
+    })
+
     return {
         activities,
         isLoading,
@@ -67,7 +97,8 @@ export const useActivities = (id?: string) => {
         createActivity,
         deleteActivity,
         activity,
-        isLoadingActivity
+        isLoadingActivity,
+        updateAttendance
     }
 
 }

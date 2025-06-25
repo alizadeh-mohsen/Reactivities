@@ -7,8 +7,8 @@ import ActivityDetailsChat from "./ActivityDetailsChat";
 import ActivityDetailsSidebar from "./ActivityDetailsSidebar";
 
 export default function ActivityDetailPage() {
-    const {id} = useParams();
-    const {activity, isLoadingActivity} = useActivities(id);
+    const { id } = useParams();
+    const { activity, isLoadingActivity } = useActivities(id);
 
     if (isLoadingActivity) return <Typography>Loading...</Typography>
 
@@ -22,7 +22,7 @@ export default function ActivityDetailPage() {
                 <ActivityDetailsChat />
             </Grid2>
             <Grid2 size={4}>
-                <ActivityDetailsSidebar />
+                <ActivityDetailsSidebar activity={activity} />
             </Grid2>
         </Grid2>
     )

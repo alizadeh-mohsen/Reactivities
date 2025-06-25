@@ -18,6 +18,7 @@ public class GetActivityList
         {
             return await context.Activities
                 .ProjectTo<ActivityDto>(mapper.ConfigurationProvider)
+                .OrderBy(x=>x.Title)
                 .ToListAsync(cancellationToken);
         }
     }

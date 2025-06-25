@@ -1,54 +1,57 @@
-﻿using Application.Core;
+﻿using System;
+using Application.Core;
 using Application.Interfaces;
 using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
-namespace Application.Activities.Commands
+namespace Application.Activities.Commands;
+
+public class UpdateAttendance
 {
-    public class UpdateAttendance
+    public class Command : IRequest<Result<Unit>>
     {
-        public class Command : IRequest<Result<Unit>>
-        {
-            public required string ActivityId { get; set; }
+        public required string ActivityId { get; set; }
+    }
 
-        }
-
-        public class Handler(IUserAccessor userAccessor, AppDbContext dbContext) : IRequestHandler<Command, Result<Unit>>
+    public class Handler(IUserAccessor userAccessor, AppDbContext context)
+        : IRequestHandler<Command, Result<Unit>>
+    {
+        public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
         {
-            public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
+            var activity = await context.Activities
+                .Include(x => x.Attendees)
+                .ThenInclude(x => x.User)
+                .SingleOrDefaultAsync(x => x.Id == request.ActivityId, cancellationToken);
+
+            if (activity == null) return Result<Unit>.Failure("Activity not found", 404);
+
+            var user = await userAccessor.GetUserAsync();
+
+            var attendance = activity.Attendees.FirstOrDefault(x => x.UserId == user.Id);
+            var isHost = activity.Attendees.Any(x => x.IsHost && x.UserId == user.Id);
+
+            if (attendance != null)
             {
-                var user = await userAccessor.GetUserAsync();
-                if (user == null) return Result<Unit>.Failure("User not found", 404);
-
-                var activity = await dbContext.Activities.FindAsync(request.ActivityId);
-                if (activity == null) return Result<Unit>.Failure("Activity not found", 404);
-
-                ActivityAttendee attendee = await dbContext.ActivityAttendees
-                      .FirstAsync(x => x.UserId == user.Id && x.ActivityId == request.ActivityId, cancellationToken);
-               
-                if (attendee == null)
-                {
-                    attendee = new ActivityAttendee
-                    {
-                        UserId = user.Id,
-                        ActivityId = request.ActivityId
-                    };
-                    dbContext.ActivityAttendees.Add(attendee);
-                }
-                else
-                {
-                    if (attendee.IsHost)
-                        activity.IsCancelled = !activity.IsCancelled;
-                    else
-                        dbContext.ActivityAttendees.Remove(attendee);
-                }
-
-                return await dbContext.SaveChangesAsync(cancellationToken) > 0
-                    ? Result<Unit>.Success(Unit.Value)
-                    : Result<Unit>.Failure("Failed to update attendance", 400);
+                if (isHost) activity.IsCancelled = !activity.IsCancelled;
+                else activity.Attendees.Remove(attendance);
             }
+            else
+            {
+                activity.Attendees.Add(new ActivityAttendee
+                {
+                    UserId = user.Id,
+                    ActivityId = activity.Id,
+                    IsHost = false
+                });
+            }
+
+            var result = await context.SaveChangesAsync(cancellationToken) > 0;
+
+            return result
+                ? Result<Unit>.Success(Unit.Value)
+                : Result<Unit>.Failure("Problem updating the DB", 400);
         }
     }
 }
