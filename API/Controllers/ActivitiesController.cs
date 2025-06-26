@@ -11,7 +11,7 @@ public class ActivitiesController : BaseApiController
     [HttpGet]
     public async Task<ActionResult<List<ActivityDto>>> GetActivities()
     {
-        return await Mediator.Send(new GetActivityList.Query());
+        return HandleResult(await Mediator.Send(new GetActivityList.Query()));
     }
 
     [HttpGet("{id}")]
@@ -27,10 +27,10 @@ public class ActivitiesController : BaseApiController
     }
 
     [HttpPut("{id}")]
-    [Authorize(Policy ="IsActivityHost")]
+    [Authorize(Policy = "IsActivityHost")]
     public async Task<ActionResult> EditActivity(string id, EditActivityDto activityDto)
     {
-        activityDto.Id = id; 
+        activityDto.Id = id;
         return HandleResult(await Mediator.Send(new EditActivity.Command { ActivityDto = activityDto }));
     }
 
