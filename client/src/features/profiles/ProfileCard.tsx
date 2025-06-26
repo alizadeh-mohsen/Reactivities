@@ -28,6 +28,20 @@ export default function ProfileCard({ profile }: Props) {
                 <CardContent>
                     <Box display='flex' alignItems='center' gap={1}>
                         <Typography variant="h5">{profile.displayName}</Typography>
+                        {profile.bio && (
+                            <Typography
+                                variant="body2"
+                                sx={{
+                                    textOverflow: 'ellipsis',
+                                    overflow: 'hidden',
+                                    whiteSpace: 'nowrap'
+                                }}
+                            >
+                                {profile.bio}
+                            </Typography>
+                        )}
+
+
                         {following && <Chip size="small" label='Following' 
                             color="secondary" variant="outlined" />}
                     </Box>
@@ -36,7 +50,7 @@ export default function ProfileCard({ profile }: Props) {
                 <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'start'}}>
                     <Person />
                     <Typography sx={{ml: 1}}>20 Followers</Typography>
-                </Box>Add commentMore actions
+                </Box>
             </Card>
         </Link>
     )

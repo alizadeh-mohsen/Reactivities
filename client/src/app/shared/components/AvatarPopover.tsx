@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Popover from '@mui/material/Popover';
+import { useState } from 'react';
 import { Avatar } from '@mui/material';
 import { Link } from 'react-router';
 import ProfileCard from '../../../features/profiles/ProfileCard';
@@ -8,9 +9,8 @@ type Props = {
     profile: Profile
 }
 
-
 export default function AvatarPopover({ profile }: Props) {
-    const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
+    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
     const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -23,11 +23,10 @@ export default function AvatarPopover({ profile }: Props) {
     const open = Boolean(anchorEl);
 
     return (
-        <div>
+        <>
             <Avatar
-
-                src={profile.imageUrl}
                 alt={profile.displayName + ' image'}
+                src={profile.imageUrl}
                 component={Link}
                 to={`/profiles/${profile.id}`}
                 onMouseEnter={handlePopoverOpen}
@@ -49,8 +48,8 @@ export default function AvatarPopover({ profile }: Props) {
                 onClose={handlePopoverClose}
                 disableRestoreFocus
             >
-                <ProfileCard profile={profile}></ProfileCard>
+                <ProfileCard profile={profile} />
             </Popover>
-        </div>
+        </>
     );
 }

@@ -1,4 +1,4 @@
-import { Card, CardMedia, Box, Typography, Button, Chip } from "@mui/material";
+import { Card, CardMedia, Box, Typography, Chip } from "@mui/material";
 import { Link } from "react-router";
 import { formatDate } from "../../../lib/util/util";
 import { useActivities } from "../../../lib/hooks/useActivities";
@@ -8,15 +8,15 @@ type Props = {
     activity: Activity
 }
 
-export default function ActivityDetailsHeader({ activity }: Props) {
-
-    const { updateAttendance } = useActivities(activity.id);
+export default function ActivityDetailsHeader({activity}: Props) {
+    const {updateAttendance} = useActivities(activity.id);
 
     return (
         <Card sx={{ position: 'relative', mb: 2, backgroundColor: 'transparent', overflow: 'hidden' }}>
             {activity.isCancelled && (
                 <Chip
-                    sx={{ position: 'absolute', left: 40, top: 20, zIndex: 1000, borderRadius: 1 }}
+                    sx={{ position: 'absolute', left: 40, top: 20, 
+                        zIndex: 1000, borderRadius: 1 }}
                     color="error"
                     label="Cancelled"
                 />
@@ -45,7 +45,9 @@ export default function ActivityDetailsHeader({ activity }: Props) {
                     <Typography variant="h4" sx={{ fontWeight: 'bold' }}>{activity.title}</Typography>
                     <Typography variant="subtitle1">{formatDate(activity.date)}</Typography>
                     <Typography variant="subtitle2">
-                        Hosted by <Link to={`/profiles/username`} style={{ color: 'white', fontWeight: 'bold' }}>{activity.hostDisplayName}</Link>
+                        Hosted by <Link to={`/profiles/${activity.hostId}`} style={{ color: 'white', fontWeight: 'bold' }}>
+                            {activity.hostDisplayName}
+                        </Link>
                     </Typography>
                 </Box>
 
@@ -72,14 +74,14 @@ export default function ActivityDetailsHeader({ activity }: Props) {
                             </StyledButton>
                         </>
                     ) : (
-                        <Button
+                        <StyledButton
                             variant="contained"
                             color={activity.isGoing ? 'primary' : 'info'}
                             onClick={() => updateAttendance.mutate(activity.id)}
                             disabled={updateAttendance.isPending || activity.isCancelled}
                         >
                             {activity.isGoing ? 'Cancel Attendance' : 'Join Activity'}
-                        </Button>
+                        </StyledButton>
                     )}
                 </Box>
             </Box>

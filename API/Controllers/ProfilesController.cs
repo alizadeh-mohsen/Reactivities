@@ -1,5 +1,6 @@
 ﻿using Application.Core;
 using Application.Profiles.Commands;
+using Application.Profiles.DTOs;
 using Application.Profiles.Queries;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,18 @@ namespace API.Controllers
         public async Task<ActionResult> DeletePhoto(string id)
         {
             return HandleResult(await Mediator.Send(new DeletePhoto.Command { PhotoId = id }));
+        }
+
+        [HttpPut("setMain/{id}")]
+        public async Task<ActionResult> SetMainPhoto(string id)
+        {
+            return HandleResult(await Mediator.Send(new SetMainPhoto.Command { PhotoId = id }));
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<UserProfileDto>> GetProfile(string id)
+        {
+            return HandleResult(await Mediator.Send(new GetProfile.Query { UserId = id }));
         }
     }
 }

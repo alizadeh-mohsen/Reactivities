@@ -9,7 +9,6 @@ type Props = {
 }
 
 export default function ActivityCard({ activity }: Props) {
-
   const label = activity.isHost ? 'You are hosting' : 'You are going';
   const color = activity.isHost ? 'secondary' : activity.isGoing ? 'warning' : 'default';
 
@@ -17,7 +16,11 @@ export default function ActivityCard({ activity }: Props) {
     <Card elevation={3} sx={{ borderRadius: 3 }}>
       <Box display='flex' alignItems='center' justifyContent='space-between'>
         <CardHeader
-          avatar={<Avatar sx={{ height: 80, width: 80 }} />}
+          avatar={<Avatar 
+            src={activity.hostImageUrl} 
+            sx={{ height: 80, width: 80 }} 
+            alt="image of host"
+          />}
           title={activity.title}
           titleTypographyProps={{
             fontWeight: 'bold',
@@ -25,7 +28,10 @@ export default function ActivityCard({ activity }: Props) {
           }}
           subheader={
             <>
-              Hosted by{' '} <Link to={`/profiles/${activity.hostDisplayName}}`}>{activity.hostDisplayName}</Link>
+              Hosted by{' '} 
+              <Link to={`/profiles/${activity.hostId}`}>
+                {activity.hostDisplayName}
+              </Link>
             </>
           }
         />
@@ -51,13 +57,9 @@ export default function ActivityCard({ activity }: Props) {
         </Box>
         <Divider />
         <Box display='flex' gap={2} sx={{ backgroundColor: 'grey.200', py: 3, pl: 3 }}>
-          {
-            activity.attendees.map(attendee => (
-              <AvatarPopover
-                key={attendee.id}
-                profile={attendee}></AvatarPopover>
-            ))
-          }
+          {activity.attendees.map(att => (
+            <AvatarPopover profile={att} key={att.id} />
+          ))}
         </Box>
       </CardContent>
       <CardContent sx={{ pb: 2 }}>

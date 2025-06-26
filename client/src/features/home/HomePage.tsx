@@ -23,11 +23,11 @@ export default function HomePage() {
       >
         <Group sx={{height: 110, width: 110}} />
         <Typography variant="h1">
-          Events
+          Reactivities
         </Typography>
       </Box>
       <Typography variant="h2">
-        Explore Events
+        Welcome to reactivities
       </Typography>
       <Button
         component={Link}
@@ -36,7 +36,7 @@ export default function HomePage() {
         variant="contained"
         sx={{height: 80, borderRadius: 4, fontSize: '1.5rem'}}
       >
-        Take me to the Events!
+        Take me to the activities!
       </Button>
     </Paper>
   )

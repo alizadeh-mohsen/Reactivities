@@ -15,14 +15,15 @@ public class MappingProfiles : Profile
         CreateMap<Activity, ActivityDto>()
             .ForMember(dest => dest.HostDisplayName,
                 opt => opt.MapFrom(src => src.Attendees.FirstOrDefault(x => x.IsHost)!.User.DisplayName))
-            .ForMember(dest => dest.HostId, 
+            .ForMember(dest => dest.HostId,
             opt => opt.MapFrom(src => src.Attendees.FirstOrDefault(x => x.IsHost)!.User.Id));
 
-           CreateMap<ActivityAttendee, UserProfileDto>()
-            .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.User.DisplayName ?? src.User.UserName))
-            .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.User.ImageUrl))
-            .ForMember(dest=>dest.Bio,opt=>opt.MapFrom(src => src.User.Bio))
-            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.User.Id));
-        ;
+        CreateMap<ActivityAttendee, UserProfileDto>()
+         .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.User.DisplayName ?? src.User.UserName))
+         .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.User.ImageUrl))
+         .ForMember(dest => dest.Bio, opt => opt.MapFrom(src => src.User.Bio))
+         .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.User.Id));
+
+        CreateMap<User, UserProfileDto>();
     }
 }
