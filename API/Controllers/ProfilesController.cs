@@ -38,5 +38,11 @@ namespace API.Controllers
         {
             return HandleResult(await Mediator.Send(new GetProfile.Query { UserId = id }));
         }
+
+        [HttpPut]
+        public async Task<ActionResult> UpdateBio(EditProfile.Command command)
+        {
+            return HandleResult(await Mediator.Send(command));
+        }
     }
 }

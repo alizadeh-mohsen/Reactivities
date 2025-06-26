@@ -28,7 +28,7 @@ agent.interceptors.response.use(
     async error => {
         await sleep(1000);
         store.uiStore.isIdle();
- if (error.message === 'Network Error' && !error.response) { //if(error.code === 'ERR_NETWORK') {
+        if (error.message === 'Network Error' && !error.response) { //if(error.code === 'ERR_NETWORK') {
             toast.error('Server is unreachable. Please make sure API is running!');
             return Promise.reject(error);
         }
@@ -54,7 +54,7 @@ agent.interceptors.response.use(
                 router.navigate('/not-found');
                 break;
             case 500:
-                router.navigate('/server-error', {state: {error: data}})
+                router.navigate('/server-error', { state: { error: data } })
                 break;
             default:
                 break;

@@ -1,5 +1,4 @@
 import { Paper, Typography, List, ListItem, Chip, ListItemAvatar, Avatar, ListItemText, Grid2 } from "@mui/material";
-import { Link } from "react-router";
 
 type Props = {
     activity: Activity
