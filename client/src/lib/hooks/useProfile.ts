@@ -15,21 +15,21 @@ export const useProfile = (id?: string) => {
         enabled: !!id
     })
 
-    const { data: photos, isLoading: loadingPhotos } = useQuery<Photo[]>({
+    const {data: photos, isLoading: loadingPhotos} = useQuery<Photo[]>({
         queryKey: ['photos', id],
         queryFn: async () => {
-            const response = await agent.get<Photo[]>(`/profiles/photos/${id}`);
+            const response = await agent.get<Photo[]>(`/profiles/${id}/photos`);
             return response.data;
         },
         enabled: !!id
     });
 
     const uploadPhoto = useMutation({
-        mutationFn: async (photo: Blob) => {
+        mutationFn: async (file: Blob) => {
             const formData = new FormData();
-            formData.append('photo', photo);
+            formData.append('file', file);
             const response = await agent.post('/profiles/add-photo', formData, {
-                headers: { 'Content-Type': 'multipart/form-data' }
+                headers: {'Content-Type': 'multipart/form-data'}
             });
             return response.data;
         },
@@ -56,7 +56,7 @@ export const useProfile = (id?: string) => {
 
     const setMainPhoto = useMutation({
         mutationFn: async (photo: Photo) => {
-            await agent.put(`/profiles/setMain/${photo.id}`)
+            await agent.put(`/profiles/${photo.id}/setMain`)
         },
         onSuccess: (_, photo) => {
             queryClient.setQueryData(['user'], (userData: User) => {
@@ -78,19 +78,14 @@ export const useProfile = (id?: string) => {
 
     const deletePhoto = useMutation({
         mutationFn: async (photoId: string) => {
-            await agent.delete(`/profiles/photos/${photoId}`)
+            await agent.delete(`/profiles/${photoId}/photos`)
         },
         onSuccess: (_, photoId) => {
             queryClient.setQueryData(['photos', id], (photos: Photo[]) => {
                 return photos?.filter(x => x.id !== photoId)
             })
         }
-    })
-
-
-    const isCurrentUser = useMemo(() => {
-        return id === queryClient.getQueryData<User>(['user'])?.id
-    }, [id, queryClient])
+    });
 
     const updateProfile = useMutation({
         mutationFn: async (profile: EditProfileSchema) => {
@@ -114,6 +109,10 @@ export const useProfile = (id?: string) => {
             });
         }
     })
+
+    const isCurrentUser = useMemo(() => {
+        return id === queryClient.getQueryData<User>(['user'])?.id
+    }, [id, queryClient])
 
     return {
         profile,

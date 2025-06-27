@@ -34,7 +34,6 @@ export default function ActivityDetailsSidebar({ activity }: Props) {
                                             alt={attendee.displayName + ' image'}
                                             src={attendee.imageUrl}
                                             sx={{ width: 75, height: 75, mr: 3 }}
-                                            
                                         />
                                     </ListItemAvatar>
                                     <ListItemText>
