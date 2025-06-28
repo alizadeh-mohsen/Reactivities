@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Application.Core;
 using Application.Interfaces;
 using Domain;
@@ -12,10 +12,10 @@ public class UpdateAttendance
 {
     public class Command : IRequest<Result<Unit>>
     {
-        public required string ActivityId { get; set; }
+        public required string Id { get; set; }
     }
 
-    public class Handler(IUserAccessor userAccessor, AppDbContext context)
+    public class Handler(IUserAccessor userAccessor, AppDbContext context) 
         : IRequestHandler<Command, Result<Unit>>
     {
         public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
@@ -23,7 +23,7 @@ public class UpdateAttendance
             var activity = await context.Activities
                 .Include(x => x.Attendees)
                 .ThenInclude(x => x.User)
-                .SingleOrDefaultAsync(x => x.Id == request.ActivityId, cancellationToken);
+                .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 
             if (activity == null) return Result<Unit>.Failure("Activity not found", 404);
 

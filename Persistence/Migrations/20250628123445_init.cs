@@ -100,8 +100,8 @@ namespace Persistence.Migrations
                 {
                     UserId = table.Column<string>(type: "TEXT", nullable: false),
                     ActivityId = table.Column<string>(type: "TEXT", nullable: false),
-                    DateJoined = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    IsHost = table.Column<bool>(type: "INTEGER", nullable: false)
+                    IsHost = table.Column<bool>(type: "INTEGER", nullable: false),
+                    DateJoined = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -237,8 +237,8 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
-                    PublicId = table.Column<string>(type: "TEXT", nullable: false),
                     Url = table.Column<string>(type: "TEXT", nullable: false),
+                    PublicId = table.Column<string>(type: "TEXT", nullable: false),
                     UserId = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
@@ -272,7 +272,8 @@ namespace Persistence.Migrations
                         name: "FK_UserFollowings_AspNetUsers_TargetId",
                         column: x => x.TargetId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

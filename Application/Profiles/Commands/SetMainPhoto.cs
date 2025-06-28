@@ -1,38 +1,36 @@
-﻿using Application.Core;
+using System;
+using Application.Core;
 using Application.Interfaces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Persistence;
 
-namespace Application.Profiles.Commands
+namespace Application.Profiles.Commands;
+
+public class SetMainPhoto
 {
-    public class SetMainPhoto
+    public class Command : IRequest<Result<Unit>>
     {
-        public class Command : IRequest<Result<Unit>>
+        public required string PhotoId { get; set; }
+    }
+
+    public class Handler(AppDbContext context, IUserAccessor userAccessor) 
+        : IRequestHandler<Command, Result<Unit>>
+    {
+        public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
         {
-            public string PhotoId { get; set; }
-        }
+            var user = await userAccessor.GetUserWithPhotosAsync();
 
-        public class Handler(IUserAccessor userAccessor, AppDbContext dbContext) : IRequestHandler<Command, Result<Unit>>
-        {
-            public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
-            {
-                var user = await userAccessor.GetUserAsync();
+            var photo = user.Photos.FirstOrDefault(x => x.Id == request.PhotoId);
 
-                var photo = await dbContext.Photos.FirstOrDefaultAsync(p => p.Id == request.PhotoId && p.UserId == user.Id);
-                if (photo == null)
-                {
-                    return Result<Unit>.Failure("Photo not found or does not belong to the user", 400);
-                }
+            if (photo == null) return Result<Unit>.Failure("Cannot find photo", 400);
 
-                user.ImageUrl = photo.Url;
-                var result = await dbContext.SaveChangesAsync(cancellationToken) > 0;
-                return result
-               ? Result<Unit>.Success(Unit.Value)
-               : Result<Unit>.Failure("Problem updating photo", 400);
+            user.ImageUrl = photo.Url;
 
+            var result = await context.SaveChangesAsync(cancellationToken) > 0;
 
-            }
+            return result
+                ? Result<Unit>.Success(Unit.Value)
+                : Result<Unit>.Failure("Problem updating photo", 400);
         }
     }
 }

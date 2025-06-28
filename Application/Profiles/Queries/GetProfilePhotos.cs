@@ -1,30 +1,29 @@
-﻿using Application.Core;
+using System;
+using Application.Core;
 using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
-namespace Application.Profiles.Queries
+namespace Application.Profiles.Queries;
+
+public class GetProfilePhotos
 {
-    public class GetProfilePhotos
+    public class Query : IRequest<Result<List<Photo>>>
     {
-        public class Query:IRequest<Result<List<Photo>>>
+        public required string UserId { get; set; }
+    }
+
+    public class Handler(AppDbContext context) : IRequestHandler<Query, Result<List<Photo>>>
+    {
+        public async Task<Result<List<Photo>>> Handle(Query request, CancellationToken cancellationToken)
         {
-            public required string UserId { get; set; }
-        }
-        public class Handler(AppDbContext context) : IRequestHandler<Query, Result<List<Photo>>>
-        {
-            public async Task<Result<List<Photo>>> Handle(Query request, CancellationToken cancellationToken)
-            {
-                var photos = await context.Photos
-                    .Where(p => p.UserId == request.UserId)
-                    .ToListAsync(cancellationToken);
-                
-                if (photos.Any())
-                    return Result<List<Photo>>.Success(photos);
-               
-                return Result<List<Photo>>.Failure("No photos found for this user", 404);
-            }
+            var photos = await context.Users
+                .Where(x => x.Id == request.UserId)
+                .SelectMany(x => x.Photos)
+                .ToListAsync(cancellationToken);
+
+            return Result<List<Photo>>.Success(photos);
         }
     }
 }

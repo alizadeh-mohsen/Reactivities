@@ -11,7 +11,7 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250627171115_init")]
+    [Migration("20250628123445_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -412,7 +412,7 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.User", "Target")
                         .WithMany("Followers")
                         .HasForeignKey("TargetId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Observer");

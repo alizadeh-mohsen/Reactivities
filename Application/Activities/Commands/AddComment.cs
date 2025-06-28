@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Application.Activities.DTOs;
 using Application.Core;
 using Application.Interfaces;

@@ -1,6 +1,9 @@
+using System;
 using Application.Activities.Commands;
 using Application.Activities.DTOs;
 using Application.Activities.Queries;
+using Domain;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +14,7 @@ public class ActivitiesController : BaseApiController
     [HttpGet]
     public async Task<ActionResult<List<ActivityDto>>> GetActivities()
     {
-        return HandleResult(await Mediator.Send(new GetActivityList.Query()));
+        return await Mediator.Send(new GetActivityList.Query());
     }
 
     [HttpGet("{id}")]
@@ -41,10 +44,9 @@ public class ActivitiesController : BaseApiController
         return HandleResult(await Mediator.Send(new DeleteActivity.Command { Id = id }));
     }
 
-    [HttpPost("attend/{id}")]
-    public async Task<ActionResult> UpdateAttendance(string id)
+    [HttpPost("{id}/attend")]
+    public async Task<ActionResult> Attend(string id)
     {
-        return HandleResult(await Mediator.Send(new UpdateAttendance.Command { ActivityId = id }));
+        return HandleResult(await Mediator.Send(new UpdateAttendance.Command { Id = id }));
     }
-
 }

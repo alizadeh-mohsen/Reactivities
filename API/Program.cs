@@ -32,7 +32,7 @@ builder.Services.AddMediatR(x => {
     x.RegisterServicesFromAssemblyContaining<GetActivityList.Handler>();
     x.AddOpenBehavior(typeof(ValidationBehavior<,>));
 });
-builder.Services.Configure<CloudinaryConfigs>(builder.Configuration.GetSection("CloudinaryConfigs"));
+
 builder.Services.AddScoped<IUserAccessor, UserAccessor>();
 builder.Services.AddScoped<IPhotoService, PhotoService>();
 builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
@@ -46,12 +46,14 @@ builder.Services.AddIdentityApiEndpoints<User>(opt =>
 .AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddAuthorization(opt =>
 {
-    opt.AddPolicy("IsActivityHost", policy =>
+    opt.AddPolicy("IsActivityHost", policy => 
     {
         policy.Requirements.Add(new IsHostRequirement());
     });
 });
 builder.Services.AddTransient<IAuthorizationHandler, IsHostRequirementHandler>();
+builder.Services.Configure<CloudinarySettings>(builder.Configuration
+    .GetSection("CloudinaryConfigs"));
 
 var app = builder.Build();
 
@@ -67,6 +69,7 @@ app.UseAuthorization();
 app.MapControllers();
 app.MapGroup("api").MapIdentityApi<User>(); // api/login
 app.MapHub<CommentHub>("/comments");
+
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
 

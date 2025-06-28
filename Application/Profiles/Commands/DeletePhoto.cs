@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Application.Core;
 using Application.Interfaces;
 using MediatR;
@@ -24,12 +24,12 @@ public class DeletePhoto
 
             if (photo == null) return Result<Unit>.Failure("Cannot find photo", 400);
 
-            if (photo.Url == user.ImageUrl)
+            if (photo.Url == user.ImageUrl) 
                 return Result<Unit>.Failure("Cannot delete main photo", 400);
 
             var deleteResult = await photoService.DeletePhoto(photo.PublicId);
 
-            if (deleteResult.Error != null)
+            if (deleteResult.Error != null) 
                 return Result<Unit>.Failure(deleteResult.Error.Message, 400);
 
             user.Photos.Remove(photo);

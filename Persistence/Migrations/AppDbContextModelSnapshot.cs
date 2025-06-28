@@ -409,7 +409,7 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.User", "Target")
                         .WithMany("Followers")
                         .HasForeignKey("TargetId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Observer");

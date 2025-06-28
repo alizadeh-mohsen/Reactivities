@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Application.Core;
 using Application.Interfaces;
 using Domain;
@@ -14,17 +14,17 @@ public class FollowToggle
         public required string TargetUserId { get; set; }
     }
 
-    public class Handler(AppDbContext context, IUserAccessor userAccessor)
+    public class Handler(AppDbContext context, IUserAccessor userAccessor) 
         : IRequestHandler<Command, Result<Unit>>
     {
         public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
         {
             var observer = await userAccessor.GetUserAsync();
-            var target = await context.Users.FindAsync([request.TargetUserId],
+            var target = await context.Users.FindAsync([request.TargetUserId], 
                 cancellationToken);
-
+            
             if (target == null) return Result<Unit>.Failure("Target user not found", 400);
-
+            
             var following = await context.UserFollowings
                 .FindAsync([observer.Id, target.Id], cancellationToken);
 

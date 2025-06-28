@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Application.Activities.Commands;
 using Application.Activities.Queries;
 using MediatR;
@@ -24,7 +24,7 @@ public class CommentHub(IMediator mediator) : Hub
 
         await Groups.AddToGroupAsync(Context.ConnectionId, activityId!);
 
-        var result = await mediator.Send(new GetComments.Query { ActivityId = activityId! });
+        var result = await mediator.Send(new GetComments.Query{ActivityId = activityId!});
 
         await Clients.Caller.SendAsync("LoadComments", result.Value);
     }
