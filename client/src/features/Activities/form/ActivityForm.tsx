@@ -10,7 +10,6 @@ import SelectInput from "../../../app/shared/components/SelectInput";
 import { categoryOptions } from "./categoryOptions";
 import DateTimeInput from "../../../app/shared/components/DateTimeInput";
 import LocationInput from "../../../app/shared/components/LocationInput";
-import { toast } from "react-toastify";
 
 export default function ActivityForm() {
     const { control, reset, handleSubmit } = useForm<ActivitySchema>({
@@ -46,7 +45,9 @@ export default function ActivityForm() {
                     onSuccess: (id) => navigate(`/activities/${id}`)
                 })
             }
-        } catch (error) {
+        } catch (error
+
+        ) {
             console.log(error)
         }
     }
@@ -76,7 +77,7 @@ export default function ActivityForm() {
                 <LocationInput control={control} label='Enter the location' name="location" />
 
                 <Box display='flex' justifyContent='end' gap={3}>
-                    <Button color='inherit'>Cancel</Button>
+                    <Button onClick={() => navigate(-1)} color='inherit'>Cancel</Button>
                     <Button
                         type="submit"
                         color='success'

@@ -3,6 +3,7 @@ import CounterStore from "./counterStore";
 import { UiStore } from "./uiStore";
 import { ActivityStore } from "./activityStore";
 
+
 interface Store {
     counterStore: CounterStore
     uiStore: UiStore
