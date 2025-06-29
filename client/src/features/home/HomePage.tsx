@@ -27,7 +27,7 @@ export default function HomePage() {
         </Typography>
       </Box>
       <Typography variant="h2">
-        Welcome to MeetUp events
+        Create or attend events in where you live
       </Typography>
       <Button
         component={Link}
