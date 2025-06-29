@@ -18,12 +18,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: set up node.js
+      - name: Set up node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20' 
         
-      - name: Install deps and build react
+      - name: Install deps and build react app
         run: | 
           cd client
           npm Install
@@ -49,6 +49,9 @@ jobs:
   deploy:
     runs-on: windows-latest
     needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
       id-token: write #This is required for requesting the JWT
       contents: read #This is required for actions/checkout
