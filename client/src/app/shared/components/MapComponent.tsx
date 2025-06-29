@@ -1,7 +1,7 @@
 import { MapContainer, Popup, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Icon } from 'leaflet'
-import { marekrIconPng } from 'leaflet/dist/images/marekr-icon.Png';
+import marekrIconPng from 'leaflet/dist/images/marker-icon.png'
 type Props = {
     position: [number, number];
     venue: string
