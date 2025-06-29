@@ -1,4 +1,4 @@
-import { Group } from "@mui/icons-material";
+import Diversity3Icon from '@mui/icons-material/Diversity3';
 import { Box, AppBar, Toolbar, Typography, Container, MenuItem, CircularProgress } from "@mui/material";
 import { NavLink } from "react-router";
 import MenuItemLink from "../shared/components/MenuItemLink";
@@ -21,9 +21,9 @@ export default function NavBar() {
                     <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
                         <Box>
                             <MenuItem component={NavLink} to='/' sx={{ display: 'flex', gap: 2 }}>
-                                <Group fontSize="large" />
+                                <Diversity3Icon fontSize="large" />
                                 <Typography sx={{position: 'relative'}} variant="h4" fontWeight='bold'>
-                                    Reactivities
+                                    MeetUp
                                 </Typography>
                                 <Observer>
                                     {() => uiStore.isLoading ? (
@@ -43,7 +43,7 @@ export default function NavBar() {
                         </Box>
                         <Box sx={{ display: 'flex' }}>
                             <MenuItemLink to='/activities'>
-                                Activities
+                                Events
                             </MenuItemLink>
                         </Box>
                         <Box display='flex' alignItems='center'>

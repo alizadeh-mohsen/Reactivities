@@ -1,7 +1,6 @@
-import { Group } from "@mui/icons-material";
 import { Box, Button, Paper, Typography } from "@mui/material";
 import { Link } from "react-router";
-
+import Diversity3Icon from '@mui/icons-material/Diversity3';
 export default function HomePage() {
   return (
     <Paper
@@ -21,13 +20,14 @@ export default function HomePage() {
         display: 'flex', alignItems: 'center', alignContent: 'center', 
         color: 'white', gap: 3}}
       >
-        <Group sx={{height: 110, width: 110}} />
+        
+        <Diversity3Icon sx={{height: 110, width: 110}} />
         <Typography variant="h1">
-          Reactivities
+          MeetUp
         </Typography>
       </Box>
       <Typography variant="h2">
-        Welcome to reactivities
+        Welcome to MeetUp events
       </Typography>
       <Button
         component={Link}
@@ -36,7 +36,7 @@ export default function HomePage() {
         variant="contained"
         sx={{height: 80, borderRadius: 4, fontSize: '1.5rem'}}
       >
-        Take me to the activities!
+        Take me to the events!
       </Button>
     </Paper>
   )

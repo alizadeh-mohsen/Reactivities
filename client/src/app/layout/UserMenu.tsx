@@ -50,7 +50,7 @@ export default function UserMenu() {
                     <ListItemIcon>
                         <Add />
                     </ListItemIcon>
-                    <ListItemText>Create Activity</ListItemText>
+                    <ListItemText>Create Event</ListItemText>
                 </MenuItem>
                 <MenuItem component={Link} to={`/profiles/${currentUser?.id}`} onClick={handleClose}>
                     <ListItemIcon>
