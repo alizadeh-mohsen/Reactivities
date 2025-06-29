@@ -12,7 +12,7 @@ import LoginForm from "../../features/account/LoginForm";
 import RequireAuth from "./RequireAuth";
 import RegisterForm from "../../features/account/RegisterForm";
 import ProfilePage from "../../features/profiles/ProfilePage";
-import ActivityDetailPage from "../../features/activities/Details/ActivityDetailPage";
+import ActivityDetailPage from "../../features/activities/details/ActivityDetailPage";
 
 export const router = createBrowserRouter([
     {
