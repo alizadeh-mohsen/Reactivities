@@ -10,6 +10,7 @@ import SelectInput from "../../../app/shared/components/SelectInput";
 import { categoryOptions } from "./categoryOptions";
 import DateTimeInput from "../../../app/shared/components/DateTimeInput";
 import LocationInput from "../../../app/shared/components/LocationInput";
+import { toast } from "react-toastify";
 
 export default function ActivityForm() {
     const { control, reset, handleSubmit } = useForm<ActivitySchema>({
@@ -33,11 +34,11 @@ export default function ActivityForm() {
     }, [activity, reset]);
 
     const onSubmit = async (data: ActivitySchema) => {
-        const {location, ...rest} = data; 
-        const flattenedData = {...rest, ...location};
+        const { location, ...rest } = data;
+        const flattenedData = { ...rest, ...location };
         try {
             if (activity) {
-                updateActivity.mutate({...activity, ...flattenedData}, {
+                updateActivity.mutate({ ...activity, ...flattenedData }, {
                     onSuccess: () => navigate(`/activities/${activity.id}`)
                 })
             } else {
@@ -46,7 +47,7 @@ export default function ActivityForm() {
                 })
             }
         } catch (error) {
-            console.log(error);
+            console.log(error)
         }
     }
 

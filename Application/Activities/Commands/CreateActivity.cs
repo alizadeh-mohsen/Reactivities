@@ -14,7 +14,7 @@ public class CreateActivity
 {
     public class Command : IRequest<Result<string>>
     {
-        public required CreateActivityDto ActivityDto { get; set; }
+        public required CreateActivityDto CreateActivityDto { get; set; }
     }
 
     public class Handler(AppDbContext context, IMapper mapper, IUserAccessor userAccessor) 
@@ -24,7 +24,7 @@ public class CreateActivity
         {
             var user = await userAccessor.GetUserAsync();
 
-            var activity = mapper.Map<Activity>(request.ActivityDto);
+            var activity = mapper.Map<Activity>(request.CreateActivityDto);
 
             context.Activities.Add(activity);
 

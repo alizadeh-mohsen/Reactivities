@@ -11,7 +11,7 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250628123445_init")]
+    [Migration("20250629130934_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -58,6 +58,8 @@ namespace Persistence.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Date");
 
                     b.ToTable("Activities");
                 });

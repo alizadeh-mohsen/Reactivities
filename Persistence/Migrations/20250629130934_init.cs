@@ -277,6 +277,11 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Activities_Date",
+                table: "Activities",
+                column: "Date");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ActivityAttendees_UserId",
                 table: "ActivityAttendees",
                 column: "UserId");

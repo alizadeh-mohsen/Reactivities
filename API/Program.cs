@@ -52,7 +52,7 @@ builder.Services.AddAuthorization(opt =>
     });
 });
 builder.Services.AddTransient<IAuthorizationHandler, IsHostRequirementHandler>();
-builder.Services.Configure<CloudinarySettings>(builder.Configuration
+builder.Services.Configure<CloudinaryConfigs>(builder.Configuration
     .GetSection("CloudinaryConfigs"));
 
 var app = builder.Build();
