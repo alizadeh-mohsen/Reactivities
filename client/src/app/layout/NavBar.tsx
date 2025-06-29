@@ -45,12 +45,6 @@ export default function NavBar() {
                             <MenuItemLink to='/activities'>
                                 Activities
                             </MenuItemLink>
-                            <MenuItemLink to='/counter'>
-                                Counter
-                            </MenuItemLink>
-                            <MenuItemLink to='/errors'>
-                                Errors
-                            </MenuItemLink>
                         </Box>
                         <Box display='flex' alignItems='center'>
                             {currentUser ? (
