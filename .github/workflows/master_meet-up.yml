@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: '20'
         
-      - name: Install deps and build react app
+      - name: Set up deps and build react app
         run: |
           cd client
           npm Install
