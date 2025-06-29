@@ -45,6 +45,9 @@ export default function NavBar() {
                             <MenuItemLink to='/activities'>
                                 Events
                             </MenuItemLink>
+                            <MenuItemLink to='/about'>
+                                About
+                            </MenuItemLink>
                         </Box>
                         <Box display='flex' alignItems='center'>
                             {currentUser ? (
