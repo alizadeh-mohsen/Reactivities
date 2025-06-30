@@ -27,7 +27,7 @@ export default function HomePage() {
         </Typography>
       </Box>
       <Typography variant="h2">
-        Create or attend events in where you live
+        Find Local Groups, Events, and Activities Near You
       </Typography>
       <Button
         component={Link}

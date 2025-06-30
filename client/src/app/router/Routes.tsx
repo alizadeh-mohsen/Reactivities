@@ -3,9 +3,6 @@ import App from "../layout/App";
 import HomePage from "../../features/home/HomePage";
 import ActivityDashboard from "../../features/activities/dashboard/ActivityDashboard";
 import ActivityForm from "../../features/activities/form/ActivityForm";
-
-import Counter from "../../features/counter/Counter";
-import TestErrors from "../../features/errors/TestErrors";
 import NotFound from "../../features/errors/NotFound";
 import ServerError from "../../features/errors/ServerError";
 import LoginForm from "../../features/account/LoginForm";
@@ -26,11 +23,10 @@ export const router = createBrowserRouter([
                 { path: 'createActivity', element: <ActivityForm key='create' /> },
                 { path: 'manage/:id', element: <ActivityForm /> },
                 { path: 'profiles/:id', element: <ProfilePage /> },
-                { path: 'about', element: <About /> },
+                
             ]},
             { path: '', element: <HomePage /> },
-            { path: 'counter', element: <Counter /> },
-            { path: 'errors', element: <TestErrors /> },
+            { path: 'about', element: <About /> },  
             { path: 'not-found', element: <NotFound /> },
             { path: 'server-error', element: <ServerError /> },
             { path: 'login', element: <LoginForm /> },
