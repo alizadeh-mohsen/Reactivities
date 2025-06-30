@@ -3,6 +3,7 @@ import { Avatar, Box, Button, Card, CardContent, CardHeader, Chip, Divider, Typo
 import { Link } from "react-router";
 import { formatDate } from "../../../lib/util/util";
 import AvatarPopover from "../../../app/shared/components/AvatarPopover";
+import ClassIcon from '@mui/icons-material/Class';
 
 type Props = {
   activity: Activity
@@ -16,9 +17,9 @@ export default function ActivityCard({ activity }: Props) {
     <Card elevation={3} sx={{ borderRadius: 3 }}>
       <Box display='flex' alignItems='center' justifyContent='space-between'>
         <CardHeader
-          avatar={<Avatar 
-            src={activity.hostImageUrl} 
-            sx={{ height: 80, width: 80 }} 
+          avatar={<Avatar
+            src={activity.hostImageUrl}
+            sx={{ height: 80, width: 80 }}
             alt="image of host"
           />}
           title={activity.title}
@@ -28,7 +29,7 @@ export default function ActivityCard({ activity }: Props) {
           }}
           subheader={
             <>
-              Hosted by{' '} 
+              Hosted by{' '}
               <Link to={`/profiles/${activity.hostId}`}>
                 {activity.hostDisplayName}
               </Link>
@@ -43,7 +44,7 @@ export default function ActivityCard({ activity }: Props) {
 
       <Divider sx={{ mb: 3 }} />
 
-      <CardContent sx={{ p: 0 }}>
+      <CardContent  sx={{ p: 0 }}>
         <Box display='flex' alignItems='center' mb={2} px={2}>
           <Box display='flex' flexGrow={0} alignItems='center'>
             <AccessTime sx={{ mr: 1 }} />
@@ -51,7 +52,8 @@ export default function ActivityCard({ activity }: Props) {
               {formatDate(activity.date)}
             </Typography>
           </Box>
-
+          <ClassIcon sx={{ ml: 3, mr: 1 }} />
+          <Typography variant="body2">{activity.category}</Typography>
           <Place sx={{ ml: 3, mr: 1 }} />
           <Typography variant="body2">{activity.venue}</Typography>
         </Box>
