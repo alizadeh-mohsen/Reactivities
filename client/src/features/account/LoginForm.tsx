@@ -64,7 +64,7 @@ export default function LoginForm() {
 
             </Paper>
             <Box sx={{mt:2}} display='flex' alignItems='center' justifyContent='center'>
-                <Chip size="small" label=' or simply login as guest using:  email: guest@test.com, password: Guest@1'
+                <Chip size="small" label='Or simply login as guest using Email: guest@test.com and Password: Guest@1'
                     color="secondary" variant="outlined" /></Box>
         </>
     )

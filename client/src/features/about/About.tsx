@@ -28,7 +28,7 @@ export default function About() {
                 </Paper>
 
             </Grid2>
-            <Grid2  size={4}
+            <Grid2 size={4}
                 sx={{
                     position: 'sticky',
                     top: 112,
@@ -43,8 +43,9 @@ export default function About() {
                             sx={{ width: 150, height: 150 }}
                         />
                         <Box display='flex' flexDirection='column' gap={2}>
-                            <Typography variant="h6">Built by</Typography>
-                            <a href="https://www.linkedin.com/in/mo-aliz/"><Typography variant="h6" > Mohsen Alizadeh</Typography></a>
+                             <Typography >Mohsen Alizadeh</Typography>
+                            <Typography >Mobile: (+44) 7932742686</Typography>
+                            <Typography >LinkedIn: <a href="https://www.linkedin.com/in/mo-aliz/">linkedin.com/in/mo-aliz</a></Typography>
                         </Box>
                     </Stack>
                 </Paper>
