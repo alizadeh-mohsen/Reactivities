@@ -6,6 +6,11 @@ export default function About() {
         <Grid2 container spacing={3}>
             <Grid2 size={8}>
                 <Paper elevation={3} sx={{ p: 4, borderRadius: 3 }}>
+                    <Typography>
+                        MeetUp is a fake social event platform where users can register,
+                        log in, and build their profiles. Create and discover events,
+                        explore event details, join or leave gatherings, view attendee lists,
+                        follow other users, chat in real time, and leave comments to stay connected. It's been developed using:</Typography>
                     <List>
                         <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>.Net 9.0, React 19.0 with Typescript</ListItem>
                         <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>Web API .Net Core</ListItem>
@@ -42,8 +47,8 @@ export default function About() {
                             alt='current user image'
                             sx={{ width: 150, height: 150 }}
                         />
-                        <Box display='flex' flexDirection='column' gap={2}>
-                             <Typography >Mohsen Alizadeh</Typography>
+                        <Box display='flex' flexDirection='column' gap={2} sx={{ overflow: 'hidden' }}>
+                            <Typography >Mohsen Alizadeh</Typography>
                             <Typography >Mobile: (+44) 7932742686</Typography>
                             <Typography >LinkedIn: <a href="https://www.linkedin.com/in/mo-aliz/">linkedin.com/in/mo-aliz</a></Typography>
                         </Box>

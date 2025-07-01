@@ -59,12 +59,12 @@ export default function LoginForm() {
                     <Typography sx={{ ml: 2 }} component={Link} to='/register' color="primary">
                         Sign up
                     </Typography>
-                </Typography>
 
+                </Typography>
 
             </Paper>
             <Box sx={{mt:2}} display='flex' alignItems='center' justifyContent='center'>
-                <Chip size="small" label='Or simply login as guest using Email: guest@test.com and Password: Guest@1'
+                <Chip size="medium" label='Or simply login as guest using Email: guest@test.com and Password: Guest@1'
                     color="secondary" variant="outlined" /></Box>
         </>
     )
