@@ -12,7 +12,9 @@ export default function About() {
                         explore event details, join or leave gatherings, view attendee lists,
                         follow other users, chat in real time, and leave comments to stay connected. It's been developed using:</Typography>
                     <List>
+                        <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>Azuer App Service and Azure SQL Database</ListItem>
                         <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>.Net 9.0, React 19.0 with Typescript</ListItem>
+                        <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>Web API .Net Core</ListItem>
                         <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>Web API .Net Core</ListItem>
                         <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>Clean Architecture using the CQRS + Mediator pattern</ListItem>
                         <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>Entity Framework Core and SQL Server</ListItem>
