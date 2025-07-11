@@ -73,7 +73,7 @@ export default function About() {
                             <Typography >LinkedIn: <a href="https://www.linkedin.com/in/mo-aliz/">linkedin.com/in/mo-aliz</a></Typography>
                         </Box>
                     </Stack>
-                    <Typography sx={{mt:3}} >The sourc code is avaiable on my<a href="https://github.com/alizadeh-mohsen/Reactivities"> Github</a> page</Typography>
+                    <Typography sx={{mt:3}} >The sourc code is avaiable on my <a href="https://github.com/alizadeh-mohsen/Reactivities">Github</a> page</Typography>
                 </Paper>
             </Grid2>
         </Grid2>
