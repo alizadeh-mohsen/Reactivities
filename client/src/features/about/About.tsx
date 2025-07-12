@@ -57,10 +57,20 @@ export default function About() {
             }}>
                 <Paper elevation={3} sx={{ p: 4, borderRadius: 3 }}>
                     <Typography>
-                        MeetUp is a fake social event platform where users can register,
-                        log in, and build their profiles. Create and discover events,
-                        explore event details, join or leave gatherings, view attendee lists,
-                        follow other users, chat in real time, and leave comments to stay connected.</Typography>
+                        MeetUp is a Desktop Web App which enables users to:
+                        <List>
+                            <ListItem>- Create an account</ListItem>
+                            <ListItem>- Build a profile</ListItem>
+                            <ListItem>- Create events</ListItem>
+                            <ListItem>- Search for events</ListItem>
+                            <ListItem>- Join or leave events</ListItem>
+                            <ListItem>- View the attendees list</ListItem>
+                            <ListItem>- Follow other users</ListItem>
+                            <ListItem>- Chat in real-time</ListItem>
+                            <ListItem>- Post comments</ListItem>
+
+                        </List>
+                    </Typography>
                     <Stack direction='row' spacing={3} sx={{ mt: 3 }} alignItems='center'>
                         <Avatar
                             src={`/images/Mohsen.jpg`}
@@ -73,7 +83,7 @@ export default function About() {
                             <Typography >LinkedIn: <a href="https://www.linkedin.com/in/mo-aliz/">linkedin.com/in/mo-aliz</a></Typography>
                         </Box>
                     </Stack>
-                    <Typography sx={{mt:3}} >The sourc code is avaiable on my <a href="https://github.com/alizadeh-mohsen/Reactivities">Github</a> page</Typography>
+                    <Typography sx={{ mt: 3 }} >The sourc code is avaiable on my <a href="https://github.com/alizadeh-mohsen/Reactivities">GitHub</a> page</Typography>
                 </Paper>
             </Grid2>
         </Grid2>
