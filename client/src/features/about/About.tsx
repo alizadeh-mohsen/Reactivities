@@ -11,7 +11,7 @@ export default function About() {
                             Backend Technologies and Features:
                         </Typography>
                         <List>
-                            <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>.Net 9.0</ListItem>
+                            <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>C# .Net 9.0</ListItem>
                             <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>ASP.NET Restful Web API</ListItem>
                             <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>Clean Architecture using the CQRS + Mediator pattern</ListItem>
                             <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>Entity Framework Core and SQL Server</ListItem>
@@ -57,7 +57,7 @@ export default function About() {
             }}>
                 <Paper elevation={3} sx={{ p: 4, borderRadius: 3 }}>
                     <Typography>
-                        MeetUp is a Desktop Web App which enables users to:
+                        MeetUp is a Web Application built with .NET 9, C#, React 19 and SQL Server which the following features:
                         <List>
                             <ListItem>- Create an account</ListItem>
                             <ListItem>- Build a profile</ListItem>
