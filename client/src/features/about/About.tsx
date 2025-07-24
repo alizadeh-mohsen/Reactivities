@@ -57,7 +57,7 @@ export default function About() {
             }}>
                 <Paper elevation={3} sx={{ p: 4, borderRadius: 3 }}>
                     <Typography>
-                        MeetUp is a Web Application built with .NET 9, C#, React 19 and SQL Server which the following features:
+                        MeetUp is a web application built using .NET 9, C#, React 19, and SQL Server, featuring the following capabilities:
                         <List>
                             <ListItem>- Create an account</ListItem>
                             <ListItem>- Build a profile</ListItem>
