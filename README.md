@@ -103,6 +103,9 @@
 1. client login/registert
 2. private routes
 
+# Database Migration
+Migrated database from Microsoft SQL Server to PostgreSQL
+
 
 
 
