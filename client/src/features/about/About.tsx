@@ -14,7 +14,7 @@ export default function About() {
                             <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>C# .Net 9.0</ListItem>
                             <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>ASP.NET Restful Web API</ListItem>
                             <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>Clean Architecture using the CQRS + Mediator pattern</ListItem>
-                            <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>Entity Framework Core and SQL Server</ListItem>
+                            <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>Entity Framework Core and SQL Server (Migrated to PostgreSQL)</ListItem>
                             <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>AutoMapper and MediatR</ListItem>
                             <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>Identity and Authentication using .Net Core Identity</ListItem>
                             <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>Fluent Validation, Middleware and Interceptors </ListItem>
@@ -56,7 +56,7 @@ export default function About() {
             }}>
                 <Paper elevation={3} sx={{ p: 4, borderRadius: 3 }}>
                     <Typography>
-                        MeetUp is a web application built using .NET 9, C#, React 19, and SQL Server, featuring the following capabilities:
+                        MeetUp is a web application built using .NET 9, C#, React 19, and SQL Server (Migrated to PostgreSQL), featuring the following capabilities:
                         <List>
                             <ListItem>- Create an account</ListItem>
                             <ListItem>- Build a profile</ListItem>
