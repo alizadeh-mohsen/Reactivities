@@ -38,7 +38,6 @@ export default function About() {
                         </List>
                     </Paper>
                     <Paper elevation={3} sx={{ p: 4, borderRadius: 3 }}>
-
                         <Typography variant="h6" sx={{ mb: 2 }}>
                             CI/CD and Deployment:
                         </Typography>
@@ -68,7 +67,6 @@ export default function About() {
                             <ListItem>- Follow other users</ListItem>
                             <ListItem>- Chat in real-time</ListItem>
                             <ListItem>- Post comments</ListItem>
-
                         </List>
                     </Typography>
                     <Stack direction='row' spacing={3} sx={{ mt: 3 }} alignItems='center'>
