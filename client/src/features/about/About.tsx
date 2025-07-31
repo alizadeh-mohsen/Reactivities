@@ -78,10 +78,10 @@ export default function About() {
                         <Box display='flex' flexDirection='column' gap={2} sx={{ overflow: 'hidden' }}>
                             <Typography >Mohsen Alizadeh</Typography>
                             <Typography >Mobile: (+44) 7932742686</Typography>
-                            <Typography >LinkedIn: <a href="https://www.linkedin.com/in/mo-aliz/">linkedin.com/in/mo-aliz</a></Typography>
+                            <Typography >LinkedIn: <a  target="_blank" href="https://www.linkedin.com/in/mo-aliz/">linkedin.com/in/mo-aliz</a></Typography>
                         </Box>
                     </Stack>
-                    <Typography sx={{ mt: 3 }} >The sourc code is avaiable on my <a href="https://github.com/alizadeh-mohsen/Reactivities">GitHub</a> page</Typography>
+                    <Typography sx={{ mt: 3 }} >The sourc code is avaiable on my <a target="_blank" href="https://github.com/alizadeh-mohsen/Reactivities">GitHub</a> page</Typography>
                 </Paper>
             </Grid2>
         </Grid2>
