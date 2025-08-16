@@ -43,7 +43,7 @@ export default function About() {
                         </Typography>
                         <List>
                             <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>Azuer App Service</ListItem>
-                            <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>Azure SQL Database (Migrated PostgreSQL on Supabase cloud)</ListItem>
+                            <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>Azure SQL Database (Migrated to PostgreSQL in Supabase cloud)</ListItem>
                             <ListItem><ListItemIcon><StarIcon fontSize='small' sx={{ color: 'goldenrod' }} /></ListItemIcon>GitHub actions and workflow</ListItem>
                         </List>
                     </Paper>
