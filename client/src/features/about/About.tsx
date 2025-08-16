@@ -55,20 +55,12 @@ export default function About() {
                 alignSelf: 'flex-start'
             }}>
                 <Paper elevation={3} sx={{ p: 4, borderRadius: 3 }}>
-                    <Typography>
-                        MeetUp is a web application built using .NET 9, C#, React 19, and SQL Server (Migrated to PostgreSQL), featuring the following capabilities:
-                        <List>
-                            <ListItem>- Create an account</ListItem>
-                            <ListItem>- Build a profile</ListItem>
-                            <ListItem>- Create events</ListItem>
-                            <ListItem>- Search for events</ListItem>
-                            <ListItem>- Join or leave events</ListItem>
-                            <ListItem>- View the attendees list</ListItem>
-                            <ListItem>- Follow other users</ListItem>
-                            <ListItem>- Chat in real-time</ListItem>
-                            <ListItem>- Post comments</ListItem>
-                        </List>
-                    </Typography>
+                    <p>
+                        MeetUp is a Full Stack project built using .NET 9, C#, React 19, and SQL Server (Migrated to PostgreSQL).
+                    </p>
+                    <p>
+                        Hosted on Azure as an Azure App Service, using GitHub Actions and CI/CD Workflow.
+                    </p>
                     <Stack direction='row' spacing={3} sx={{ mt: 3 }} alignItems='center'>
                         <Avatar
                             src={`/images/Mohsen.jpg`}
@@ -81,7 +73,7 @@ export default function About() {
                             <Typography >LinkedIn: <a  target="_blank" href="https://www.linkedin.com/in/mo-aliz/">linkedin.com/in/mo-aliz</a></Typography>
                         </Box>
                     </Stack>
-                    <Typography sx={{ mt: 3 }} >The sourc code is avaiable on my <a target="_blank" href="https://github.com/alizadeh-mohsen/Reactivities">GitHub</a> page</Typography>
+                    <Typography sx={{ mt: 3 }} >The source code is avaiable on my <a target="_blank" href="https://github.com/alizadeh-mohsen/Reactivities">GitHub</a> page</Typography>
                 </Paper>
             </Grid2>
         </Grid2>
